@@ -1,3 +1,9 @@
+*.zip
+*.csv
+datasets/*
+20251122_232136/*
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
