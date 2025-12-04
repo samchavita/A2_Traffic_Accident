@@ -14,7 +14,7 @@ def download_files(urls, update_time, dir="./datasets/"):
         return
 
     # downloading datasets
-    os.makedirs( os.path.join(dir, update_time) )
+    os.makedirs( os.path.join(dir, update_time), exist_ok=True )
     try:
         print("downloading datasets...")
         i = 0
@@ -27,7 +27,7 @@ def download_files(urls, update_time, dir="./datasets/"):
             # print( filename )
             # print( url )
 
-            response = requests.get(url)
+            response = requests.get(url, verify=False)
             with  open(os.path.join(dir, update_time, filename + ".zip" ),'wb') as f:
                 f.write(response.content)
                 print(f'downloaded {filename}')
@@ -40,7 +40,7 @@ def download_files(urls, update_time, dir="./datasets/"):
         shutil.copytree( os.path.join(dir, update_time), os.path.join(dir, "latest") )
 
     except Exception as e:
-        print("error dowloading datasets:", e)
+        print("error dowloading datasets:\n", e)
     
         
 
